@@ -299,10 +299,6 @@ class PorterStemmer:
             else: return
         else:
             return
-        print("self.m()",self.m())
-        print("self.b ",self.b)
-        print("self.k - 1 ",self.k - 1)
-        print('self.ends("ate")',self.ends("ate"))
         if self.m() > 1:
             self.k = self.j
 
@@ -330,7 +326,6 @@ class PorterStemmer:
         # copy the parameters into statics
         self.b = p
         self.k = (len(p)+j )if (j < 0) else j 
-        print(self.k)
         self.k0 = i
         if self.k <= self.k0 + 1:
             return self.b # --DEPARTURE--
@@ -341,17 +336,11 @@ class PorterStemmer:
         # algorithm.
 
         self.step1ab()
-        print("step1ab",self.b[self.k0:self.k+1])
         self.step1c()
-        print("step1c",self.b[self.k0:self.k+1])
         self.step2()
-        print("step2",self.b[self.k0:self.k+1])
         self.step3()
-        print("step3",self.b[self.k0:self.k+1])
         self.step4()
-        print("step4",self.b[self.k0:self.k+1])
         self.step5()
-        print("step5",self.b[self.k0:self.k+1])
         return self.b[self.k0:self.k+1]
 
 
