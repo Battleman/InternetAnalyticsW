@@ -1,5 +1,10 @@
+import re
 import numpy as np
+import nltk
 from scipy.sparse import csr_matrix
+from nltk.stem.porter import *
+from nltk.stem import WordNetLemmatizer
+from utils import load_json, load_pkl
 
 def save_sparse_csr(filename,array):
     np.savez(filename,data = array.data ,indices=array.indices,
@@ -10,7 +15,7 @@ def load_sparse_csr(filename):
     return csr_matrix((  loader['data'], loader['indices'], loader['indptr']),
                          shape = loader['shape'])
 
-def removeStopWords(listWords):
+def removeStopWords(listWords,stopwords):
     """
     Filters out stopwords in a list of words
     """
@@ -56,10 +61,11 @@ def cleaner(oneCourse):
     Calls all above functions. First remove punctuation, then un-append words, split to space, then remove numbers
     and stopwords. 
     """
+    stopwords = load_pkl('data/stopwords.pkl')
     description = oneCourse['description']
     noPunct = removePunctuation(description) #desc without punctuation
     unAppended = splitAppendedWords(noPunct)  #desc with split words
     
     wordlist = toWordList(unAppended)
-    return removeStopWords(takeOutNumbers(wordlist))
+    return removeStopWords(takeOutNumbers(wordlist),stopwords)
 
