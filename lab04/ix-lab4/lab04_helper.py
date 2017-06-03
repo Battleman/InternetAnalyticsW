@@ -68,6 +68,6 @@ def cleaner(oneCourse):
     and stopwords. 
     """
     stopwords = load_pkl('data/stopwords.pkl')
-    return cleanDesconeCourse['description'])
+    return cleanDesconeCourse['description']
     
 
