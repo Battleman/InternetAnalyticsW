@@ -15,6 +15,9 @@ def load_sparse_csr(filename):
     return csr_matrix((  loader['data'], loader['indices'], loader['indptr']),
                          shape = loader['shape'])
 
+########
+###Preprocessing functions
+#######
 def removeStopWords(listWords,stopwords):
     """
     Filters out stopwords in a list of words
@@ -62,12 +65,12 @@ def cleanDesc(description,stopwords):
     wordlist = toWordList(unAppended)
     return removeStopWords(takeOutNumbers(wordlist),stopwords)
 
-def cleaner(oneCourse):
+def cleaner(description):
     """
     Calls all above functions. First remove punctuation, then un-append words, split to space, then remove numbers
     and stopwords. 
     """
     stopwords = load_pkl('data/stopwords.pkl')
-    return cleanDesc(oneCourse,stopwords)
+    return cleanDesc(description,stopwords)
     
 
