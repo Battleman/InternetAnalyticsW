@@ -55,7 +55,7 @@ def removePunctuation(descString):
     return unDashed.translate(puncttrans)
 
 
-def cleanDesc(description):
+def cleanDesc(description,stopwords):
     noPunct = removePunctuation(description) #desc without punctuation
     unAppended = splitAppendedWords(noPunct)  #desc with split words
     
@@ -68,6 +68,6 @@ def cleaner(oneCourse):
     and stopwords. 
     """
     stopwords = load_pkl('data/stopwords.pkl')
-    return cleanDesconeCourse['description']
+    return cleanDesc(oneCourse,stopwords)
     
 
