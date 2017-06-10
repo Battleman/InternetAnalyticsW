@@ -70,7 +70,17 @@ def cleaner(description):
     Calls all above functions. First remove punctuation, then un-append words, split to space, then remove numbers
     and stopwords. 
     """
+    stemmer = PorterStemmer()
+    lemmatizer = WordNetLemmatizer()
     stopwords = load_pkl('data/stopwords.pkl')
-    return cleanDesc(description,stopwords)
+    noPunct = removePunctuation(description) #desc without punctuation
+    unAppended = splitAppendedWords(noPunct)  #desc with split words
+    wordlist = toWordList(unAppended)
+    onlyWords = removeStopWords(takeOutNumbers(wordlist),stopwords)
+    #return onlyWords
+    newlist = []
+    for i in onlyWords:
+        newlist.append(stemmer.stem(i))
+    return newlist
     
 
