@@ -80,7 +80,7 @@ def cleaner(description):
     #return onlyWords
     newlist = []
     for i in onlyWords:
-        newlist.append(stemmer.stem(i))
+        newlist.append(lemmatizer.lemmatize(i))
     return newlist
   
 def normalized(a, axis=-1, order=2):
