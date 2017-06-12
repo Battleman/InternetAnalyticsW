@@ -60,7 +60,6 @@ def removePunctuation(descString):
     unDashed = patternDash.sub("", descString) 
     return unDashed.translate(puncttrans)
 
-
 def cleanDesc(description,stopwords):
     noPunct = removePunctuation(description) #desc without punctuation
     unAppended = splitAppendedWords(noPunct)  #desc with split words
