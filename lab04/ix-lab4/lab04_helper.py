@@ -1,6 +1,7 @@
 import re
 import numpy as np
 import nltk
+import string #string operations
 from scipy.sparse import csr_matrix
 from nltk.stem.porter import *
 from nltk.stem import WordNetLemmatizer
