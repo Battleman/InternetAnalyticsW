@@ -18,6 +18,8 @@ def load_sparse_csr(filename):
 ########
 ###Preprocessing functions
 #######
+
+stopwords = None
 def removeStopWords(listWords,stopwords):
     """
     Filters out stopwords in a list of words
@@ -70,7 +72,6 @@ def cleaner(description):
     Calls all above functions. First remove punctuation, then un-append words, split to space, then remove numbers
     and stopwords. 
     """
-    stemmer = PorterStemmer()
     lemmatizer = WordNetLemmatizer()
     stopwords = load_pkl('data/stopwords.pkl')
     noPunct = removePunctuation(description) #desc without punctuation
